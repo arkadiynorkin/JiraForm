@@ -1,0 +1,94 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Ticket Form</h1>
+    <form (ngSubmit)="onSubmit()" #ticketForm="ngForm">
+
+      <div class="form-group">
+        <label for="requestorName">Your Name</label>
+        <input type="text" class="form-control" id="requestorName"
+               required
+               [(ngModel)]="model.requestorName" name="requestorName"
+               #requestorName="ngModel">
+        <div [hidden]="requestorName.valid || requestorName.pristine"
+             class="alert alert-danger">
+          Your name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="summary">Summary</label>
+        <input type="text" class="form-control" id="summary"
+               required
+               [(ngModel)]="model.summary" name="summary"
+               #summary="ngModel">
+        <div [hidden]="summary.valid || summary.pristine"
+             class="alert alert-danger">
+         Summary is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description"
+               required
+               [(ngModel)]="model.description" name="description"
+               #description="ngModel">
+        <div [hidden]="description.valid || description.pristine"
+             class="alert alert-danger">
+          Description is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!ticketForm.form.valid">Submit</button>
+
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9  pull-left">{{ model.requestorName }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Summary</div>
+      <div class="col-xs-9 pull-left">{{ model.summary }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Description</div>
+      <div class="col-xs-9 pull-left">{{ model.description }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
+</div>
+
+<!-- ====================================================  -->
+  <div>
+    <form>
+
+       <!-- ... all of the form ... -->
+
+    </form>
+  </div>
+
+<!-- ====================================================  -->
+<hr>
+<style>
+  .no-style .ng-valid {
+  border-left: 1px  solid #CCC
+}
+
+  .no-style .ng-invalid {
+  border-left: 1px  solid #CCC
+}
+</style>
+
+
+
+  
+<!-- 
+Copyright 2017-2018 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
